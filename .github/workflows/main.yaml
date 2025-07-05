@@ -38,3 +38,5 @@ jobs:
       - name: Build container image
         run: |
           docker build -f Dockerfile -t serverless-py .
+          docker tag serverless-py us-central1-docker.pkg.dev/cfe-serverless-py-2025-464616/serverless-py-repo/serverless-py:latest
+          docker push us-central1-docker.pkg.dev/cfe-serverless-py-2025-464616/serverless-py-repo/serverless-py --all-tags
