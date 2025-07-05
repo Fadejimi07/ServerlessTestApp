@@ -1,0 +1,11 @@
+# Which version of python
+FROM python:3.11-slim-bullseye
+
+# Copy the files
+COPY . /app
+WORKDIR /app
+
+
+
+# run the application
+CMD ["python", "-m", "http.server", "8000", "--bind", "0.0.0.0"]
