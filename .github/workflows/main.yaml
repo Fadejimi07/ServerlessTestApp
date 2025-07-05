@@ -25,6 +25,16 @@ jobs:
         run: |
           pytest src/tests.py
 
- # build_deploy:
- #  needs: test
- #   runs-on: ubuntu-latest
+build_deploy:
+  needs: test
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Setup QEMU
+      uses: docker/setup-qemu-action@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Build container image
+      run: |
+        docker build -f Dockerfile -t serverless-py .
