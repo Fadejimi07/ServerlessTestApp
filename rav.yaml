@@ -13,6 +13,9 @@ scripts:
   build_run:
     - rav run build
     - rav run run
+  update_prod_secrets:
+    - gcloud config set project cfe-serverless-py-2025-464616
+    - gcloud secrets versions add py_env_file --data-file .env-prod
   configure:
     - gcloud auth configure-docker us-central1-docker.pkg.dev
     - gcloud artifacts repositories create serverless-py-repo 
